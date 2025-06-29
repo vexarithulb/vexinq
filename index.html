@@ -1,112 +1,53 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Vexinq Botu</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #1a1a1a;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        header {
-            background-color: #ff6700; /* Turuncu */
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 3px 8px rgba(255, 103, 0, 0.7);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.8em;
-            color: #fff;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        main {
-            flex: 1;
-            padding: 40px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        section {
-            background-color: #2e2e2e;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 0 15px rgba(255, 103, 0, 0.5);
-        }
-        h2 {
-            color: #ff9c33;
-            margin-top: 0;
-            border-bottom: 2px solid #ff9c33;
-            padding-bottom: 8px;
-            font-weight: 600;
-        }
-        p {
-            line-height: 1.6;
-            font-size: 1.1em;
-            color: #ddd;
-        }
-        a.button {
-            display: inline-block;
-            background-color: #ff6700;
-            color: white;
-            padding: 15px 30px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1.2em;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 103, 0, 0.6);
-        }
-        a.button:hover {
-            background-color: #e55c00;
-            box-shadow: 0 6px 20px rgba(229, 92, 0, 0.8);
-        }
-        footer {
-            background-color: #111;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #666;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vexinq Discord Botu</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1>Vexinq Botu</h1>
-    </header>
-    <main>
-        <section>
-            <h2>Hakkımızda</h2>
-            <p>
-                Vexinq, Discord sunucularınız için güçlü ve kullanımı kolay bir bottur. Moderasyon, müzik, eğlence ve çok daha fazlasını bir arada sunar.
-                Sunucunuzu daha canlı ve yönetilebilir hale getirmek için tasarlandı.
-            </p>
-        </section>
-        <section>
-            <h2>Özellikler</h2>
-            <ul>
-                <li>Gelişmiş moderasyon araçları</li>
-                <li>Müzik çalma ve oynatma listeleri</li>
-                <li>Eğlence ve oyun komutları</li>
-                <li>Kullanıcı dostu ve hızlı tepki</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Botu Davet Et</h2>
-            <p>Vexinq botunu sunucunuza davet etmek için aşağıdaki butona tıklayın.</p>
-            <a class="button" href="https://discord.com/oauth2/authorize?client_id=1387098050316472341&permissions=8&integration_type=0&scope=bot" target="_blank" rel="noopener noreferrer">Botu Davet Et</a>
-        </section>
-    </main>
-    <footer>
-        &copy; 2025 Vexinq Botu | Tüm hakları saklıdır.
-    </footer>
+  <header>
+    <div class="logo">Vexinq</div>
+    <nav>
+      <ul>
+        <li><a href="#about">Hakkımızda</a></li>
+        <li><a href="#features">Özellikler</a></li>
+        <li><a href="#contact">İletişim</a></li>
+        <li><a class="invite-btn" href="https://discord.com/oauth2/authorize?client_id=1387098050316472341&permissions=8&integration_type=0&scope=bot" target="_blank">Davet Et</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Vexinq ile Sunucunuzu Güçlendirin</h1>
+    <p>Gelişmiş özellikleriyle sunucunuzu yönetin, eğlenin ve daha fazlasını keşfedin.</p>
+    <a class="cta" href="https://discord.com/oauth2/authorize?client_id=1387098050316472341&permissions=8&integration_type=0&scope=bot" target="_blank">Botu Davet Et</a>
+  </section>
+
+  <section id="about" class="section">
+    <h2>Hakkımızda</h2>
+    <p>Vexinq, gelişmiş komut altyapısı, kullanıcı dostu arayüzü ve özelleştirilebilir sistemleri ile Discord toplulukları için geliştirilmiş güçlü bir bottur.</p>
+  </section>
+
+  <section id="features" class="section">
+    <h2>Özellikler</h2>
+    <ul>
+      <li>Moderasyon Komutları</li>
+      <li>Müzik Sistemi</li>
+      <li>Seviye & XP Sistemi</li>
+      <li>Otomatik Rol</li>
+      <li>Destek Bileti Sistemi</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>İletişim</h2>
+    <p>Bize ulaşmak için <a href="mailto:vexinqbotdestek@gmail.com">vexinqbotdestek@gmail.com</a> adresine mail atabilirsiniz.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Vexinq Bot. Tüm hakları saklıdır.</p>
+  </footer>
 </body>
 </html>
