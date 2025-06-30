@@ -30,10 +30,6 @@
       color: #007BFF;
     }
 
-    .hidden {
-      display: none;
-    }
-
     input, button {
       width: 100%;
       padding: 10px;
@@ -53,6 +49,10 @@
 
     button:hover {
       background-color: #0056b3;
+    }
+
+    .hidden {
+      display: none;
     }
 
     .admin-list {
@@ -86,6 +86,7 @@
 </head>
 <body>
 
+  <!-- Giriş Ekranı -->
   <div class="container" id="loginSection">
     <h1>Admin Giriş</h1>
     <input type="text" id="username" placeholder="Kullanıcı Adı">
@@ -93,6 +94,7 @@
     <button onclick="login()">Giriş Yap</button>
   </div>
 
+  <!-- Admin Paneli -->
   <div class="container hidden" id="adminPanel">
     <h1>Admin Paneli</h1>
 
@@ -106,12 +108,13 @@
     <button class="logout" onclick="logout()">Çıkış Yap</button>
   </div>
 
+  <!-- Alt Bilgi -->
   <footer>
     Discord: Vexarithul | © 2025 Tüm Hakları Saklıdır
   </footer>
 
   <script>
-    // Varsayılan adminler
+    // Başlangıç adminleri
     const defaultAdmins = [
       { username: "dcvexarithul", password: "123" },
       { username: "emre", password: "123" }
@@ -176,6 +179,7 @@
       location.reload();
     }
 
+    // Otomatik panel gösterimi
     window.onload = () => {
       if (localStorage.getItem("loggedIn") === "true") {
         showPanel();
