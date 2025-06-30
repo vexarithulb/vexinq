@@ -2,51 +2,52 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Vexarithul Admin Paneli</title>
+  <title>Vexinq Admin Paneli</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
+      padding: 0;
       background-color: #f4faff;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     .container {
-      max-width: 700px;
-      margin: 60px auto;
-      background-color: white;
+      max-width: 600px;
+      margin: 80px auto 40px;
+      background: white;
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      flex: 1;
     }
 
-    h2 {
-      color: #007BFF;
+    h1 {
       text-align: center;
-      margin-bottom: 30px;
+      color: #007BFF;
     }
 
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 20px;
+    .hidden {
+      display: none;
     }
 
-    input[type="text"], input[type="password"], textarea, select {
+    input, button {
       width: 100%;
       padding: 10px;
-      margin-top: 5px;
+      margin: 10px 0;
       border-radius: 6px;
       border: 1px solid #ccc;
+      font-size: 16px;
     }
 
     button {
-      margin-top: 20px;
       background-color: #007BFF;
       color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 6px;
       font-weight: bold;
+      border: none;
       cursor: pointer;
     }
 
@@ -54,198 +55,132 @@
       background-color: #0056b3;
     }
 
-    .hidden {
-      display: none;
+    .admin-list {
+      margin-top: 20px;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
     }
 
-    .feature-list, .support-list {
-      margin-top: 10px;
-      padding-left: 20px;
+    .admin-item {
+      padding: 8px 0;
+      border-bottom: 1px dashed #ddd;
     }
 
-    .feature-item, .support-item {
-      margin-bottom: 5px;
-    }
-
-    .danger {
+    .logout {
+      margin-top: 20px;
       background-color: #dc3545;
     }
 
-    .danger:hover {
-      background-color: #a61d2d;
+    .logout:hover {
+      background-color: #c82333;
     }
 
-    .input-inline {
-      display: flex;
-      gap: 10px;
-    }
-
-    .input-inline input {
-      flex: 1;
-    }
-
-    .section-divider {
-      margin-top: 40px;
-      border-top: 1px solid #ccc;
-      padding-top: 30px;
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #777;
+      background-color: #e6f0ff;
     }
   </style>
 </head>
 <body>
 
-<div class="container" id="loginBox">
-  <h2>Admin Giriş</h2>
-  <label>Kullanıcı Adı</label>
-  <input type="text" id="username">
-
-  <label>Şifre</label>
-  <input type="password" id="password">
-
-  <button onclick="login()">Giriş Yap</button>
-</div>
-
-<div class="container hidden" id="adminBox">
-  <h2>Vexinq Admin Paneli</h2>
-
-  <label>Hakkımızda</label>
-  <textarea id="about" rows="4">Vexinq, 2023 yılında Discord toplulukları için geliştirildi...</textarea>
-
-  <label>Özellikler</label>
-  <div class="input-inline">
-    <input type="text" id="newFeature" placeholder="Yeni özellik gir...">
-    <button onclick="addFeature()">Ekle</button>
-  </div>
-  <ul class="feature-list" id="featureList"></ul>
-
-  <label>Destek Sunucuları</label>
-  <div class="input-inline">
-    <input type="text" id="newSupport" placeholder="https://discord.gg/...">
-    <button onclick="addSupport()">Ekle</button>
-  </div>
-  <ul class="support-list" id="supportList"></ul>
-
-  <label>Tema Rengi</label>
-  <select id="theme">
-    <option value="blue">Mavi</option>
-    <option value="red">Kırmızı</option>
-    <option value="green">Yeşil</option>
-    <option value="purple">Mor</option>
-    <option value="orange">Turuncu</option>
-    <option value="black">Siyah</option>
-  </select>
-
-  <div class="section-divider">
-    <h2>Yeni Admin Ekle</h2>
-    <label>Yeni Admin Kullanıcı Adı</label>
-    <input type="text" id="newAdminUsername">
-
-    <label>Yeni Admin Şifresi</label>
-    <input type="password" id="newAdminPassword">
-
-    <button onclick="addAdmin()">Admin Hesabı Ekle</button>
+  <div class="container" id="loginSection">
+    <h1>Admin Giriş</h1>
+    <input type="text" id="username" placeholder="Kullanıcı Adı">
+    <input type="password" id="password" placeholder="Şifre">
+    <button onclick="login()">Giriş Yap</button>
   </div>
 
-  <button onclick="save()">Kaydet</button>
-</div>
+  <div class="container hidden" id="adminPanel">
+    <h1>Admin Paneli</h1>
 
-<script>
-  let admins = [
-    { username: "dcvexarithul", password: "123" },
-    { username: "emre", password: "123" }
-  ];
+    <h3>Yeni Admin Ekle</h3>
+    <input type="text" id="newUsername" placeholder="Yeni kullanıcı adı">
+    <input type="password" id="newPassword" placeholder="Yeni şifre">
+    <button onclick="addAdmin()">Admin Ekle</button>
 
-  const features = ['🛡️ Güçlü Koruma', '🎉 Eğlence Komutları'];
-  const supports = ['https://discord.gg/qvZBKEUCQy', 'https://discord.gg/MKq4UsRNMS'];
+    <div class="admin-list" id="adminList"></div>
 
-  function login() {
-    const user = document.getElementById("username").value.trim();
-    const pass = document.getElementById("password").value.trim();
-    const valid = admins.find(a => a.username === user && a.password === pass);
-    if (valid) {
-      document.getElementById("loginBox").classList.add("hidden");
-      document.getElementById("adminBox").classList.remove("hidden");
-      renderLists();
-    } else {
-      alert("❌ Hatalı kullanıcı adı veya şifre.");
+    <button class="logout" onclick="logout()">Çıkış Yap</button>
+  </div>
+
+  <footer>
+    Discord: Vexarithul | © 2025 Tüm Hakları Saklıdır
+  </footer>
+
+  <script>
+    // Varsayılan adminler
+    const defaultAdmins = [
+      { username: "dcvexarithul", password: "123" },
+      { username: "emre", password: "123" }
+    ];
+
+    if (!localStorage.getItem("admins")) {
+      localStorage.setItem("admins", JSON.stringify(defaultAdmins));
     }
-  }
 
-  function renderLists() {
-    const fList = document.getElementById("featureList");
-    const sList = document.getElementById("supportList");
-    fList.innerHTML = "";
-    sList.innerHTML = "";
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const admins = JSON.parse(localStorage.getItem("admins")) || [];
 
-    features.forEach((f, i) => {
-      const li = document.createElement("li");
-      li.className = "feature-item";
-      li.innerHTML = `${f} <button class="danger" onclick="removeFeature(${i})">Sil</button>`;
-      fList.appendChild(li);
-    });
-
-    supports.forEach((s, i) => {
-      const li = document.createElement("li");
-      li.className = "support-item";
-      li.innerHTML = `${s} <button class="danger" onclick="removeSupport(${i})">Sil</button>`;
-      sList.appendChild(li);
-    });
-  }
-
-  function addFeature() {
-    const val = document.getElementById("newFeature").value.trim();
-    if (val) {
-      features.push(val);
-      document.getElementById("newFeature").value = "";
-      renderLists();
+      const valid = admins.find(admin => admin.username === username && admin.password === password);
+      if (valid) {
+        localStorage.setItem("loggedIn", "true");
+        showPanel();
+      } else {
+        alert("Geçersiz kullanıcı adı veya şifre!");
+      }
     }
-  }
 
-  function removeFeature(i) {
-    features.splice(i, 1);
-    renderLists();
-  }
-
-  function addSupport() {
-    const val = document.getElementById("newSupport").value.trim();
-    if (val.startsWith("http")) {
-      supports.push(val);
-      document.getElementById("newSupport").value = "";
-      renderLists();
-    } else {
-      alert("⚠️ Geçerli bir URL girin.");
+    function showPanel() {
+      document.getElementById("loginSection").classList.add("hidden");
+      document.getElementById("adminPanel").classList.remove("hidden");
+      renderAdmins();
     }
-  }
 
-  function removeSupport(i) {
-    supports.splice(i, 1);
-    renderLists();
-  }
+    function addAdmin() {
+      const newUsername = document.getElementById("newUsername").value.trim();
+      const newPassword = document.getElementById("newPassword").value.trim();
+      if (!newUsername || !newPassword) {
+        alert("Lütfen tüm alanları doldurun.");
+        return;
+      }
 
-  function addAdmin() {
-    const user = document.getElementById("newAdminUsername").value.trim();
-    const pass = document.getElementById("newAdminPassword").value.trim();
-    if (user && pass) {
-      admins.push({ username: user, password: pass });
-      alert(`✅ Yeni admin eklendi: ${user}`);
-      document.getElementById("newAdminUsername").value = "";
-      document.getElementById("newAdminPassword").value = "";
-    } else {
-      alert("⚠️ Lütfen tüm alanları doldurun.");
+      const admins = JSON.parse(localStorage.getItem("admins")) || [];
+      if (admins.find(a => a.username === newUsername)) {
+        alert("Bu kullanıcı zaten mevcut.");
+        return;
+      }
+
+      admins.push({ username: newUsername, password: newPassword });
+      localStorage.setItem("admins", JSON.stringify(admins));
+      renderAdmins();
+      document.getElementById("newUsername").value = '';
+      document.getElementById("newPassword").value = '';
     }
-  }
 
-  function save() {
-    const data = {
-      about: document.getElementById("about").value,
-      features,
-      supports,
-      theme: document.getElementById("theme").value,
-      admins
-    };
-    alert("✅ Ayarlar kaydedildi!\n\n" + JSON.stringify(data, null, 2));
-    // Sunucuya göndermek istersen buraya fetch POST ekleyebilirsin.
-  }
-</script>
+    function renderAdmins() {
+      const adminList = document.getElementById("adminList");
+      const admins = JSON.parse(localStorage.getItem("admins")) || [];
+      adminList.innerHTML = "<h3>Mevcut Adminler</h3>";
+      admins.forEach(admin => {
+        adminList.innerHTML += `<div class="admin-item">👤 ${admin.username}</div>`;
+      });
+    }
 
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      location.reload();
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem("loggedIn") === "true") {
+        showPanel();
+      }
+    }
+  </script>
 </body>
 </html>
