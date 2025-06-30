@@ -5,26 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vexinq Discord Botu</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
   <style>
     :root {
-      --primary-color: #007BFF;
-      --primary-dark: #0056b3;
-      --background: #f4faff;
-      --text: #333;
+      --main-color: #007BFF;
+      --hover-color: #0056b3;
+      --background-color: #f4faff;
     }
 
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: var(--background);
-      color: var(--text);
+      background-color: var(--background-color);
+      color: #333;
       scroll-behavior: smooth;
     }
 
     header {
-      background-color: var(--primary-color);
+      background-color: var(--main-color);
       padding: 20px 40px;
       display: flex;
       justify-content: space-between;
@@ -58,7 +56,7 @@
 
     .invite-btn {
       background-color: white;
-      color: var(--primary-color) !important;
+      color: var(--main-color) !important;
       padding: 8px 16px;
       border-radius: 6px;
       font-weight: 600;
@@ -66,12 +64,12 @@
     }
 
     .invite-btn:hover {
-      background-color: var(--primary-dark);
+      background-color: var(--hover-color);
       color: white !important;
     }
 
     .hero {
-      background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+      background: linear-gradient(to right, var(--main-color), var(--hover-color));
       color: white;
       text-align: center;
       padding: 80px 20px;
@@ -92,7 +90,7 @@
       display: inline-block;
       padding: 12px 24px;
       background-color: white;
-      color: var(--primary-color);
+      color: var(--main-color);
       border-radius: 6px;
       font-weight: bold;
       text-decoration: none;
@@ -100,7 +98,7 @@
     }
 
     .cta:hover {
-      background-color: var(--primary-dark);
+      background-color: var(--hover-color);
       color: white;
     }
 
@@ -114,7 +112,7 @@
     .section h2 {
       text-align: center;
       font-size: 32px;
-      color: var(--primary-color);
+      color: var(--main-color);
       margin-bottom: 20px;
     }
 
@@ -123,7 +121,7 @@
     }
 
     footer {
-      background-color: var(--primary-color);
+      background-color: var(--hover-color);
       color: white;
       text-align: center;
       padding: 20px;
@@ -135,7 +133,7 @@
       bottom: 20px;
       right: 20px;
       background-color: #ffffff;
-      border-left: 5px solid var(--primary-color);
+      border-left: 5px solid var(--main-color);
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,0,0,0.15);
@@ -146,7 +144,7 @@
 
     .support-box h1 {
       font-size: 18px;
-      color: var(--primary-color);
+      color: var(--main-color);
       margin-bottom: 10px;
     }
 
@@ -157,7 +155,7 @@
     }
 
     .btn {
-      background-color: var(--primary-color);
+      background-color: var(--main-color);
       color: white;
       padding: 8px 16px;
       text-decoration: none;
@@ -169,25 +167,7 @@
     }
 
     .btn:hover {
-      background-color: var(--primary-dark);
-    }
-
-    .theme-switcher {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: white;
-      border-radius: 10px;
-      padding: 10px 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      z-index: 1001;
-    }
-
-    .theme-switcher select {
-      font-family: 'Poppins', sans-serif;
-      padding: 6px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      background-color: var(--hover-color);
     }
 
     @keyframes fadeIn {
@@ -207,19 +187,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Tema Seçici -->
-  <div class="theme-switcher">
-    <label for="theme">🎨 Tema:</label>
-    <select id="theme" onchange="changeTheme(this.value)">
-      <option value="blue">Mavi</option>
-      <option value="red">Kırmızı</option>
-      <option value="green">Yeşil</option>
-      <option value="purple">Mor</option>
-      <option value="orange">Turuncu</option>
-      <option value="black">Siyah</option>
-    </select>
-  </div>
 
   <header>
     <div class="logo">Vexinq</div>
@@ -242,6 +209,18 @@
   <section id="about" class="section">
     <h2>Hakkımızda</h2>
     <p>Vexinq, 2023 yılında Discord topluluklarının ihtiyaçlarını karşılamak amacıyla geliştirilen gelişmiş bir bot sistemidir. Kullanıcı odaklı tasarımı, modüler altyapısı ve sürekli güncellenen yapısı ile sunucular için en iyi yardımcıyı sunar.</p>
+
+    <div style="text-align:center; margin-top:30px;">
+      <label for="theme"><strong>🎨 Tema Seçin:</strong></label>
+      <select id="theme" onchange="changeTheme(this.value)" style="padding:8px 12px; border-radius:6px; border:1px solid #ccc; font-family: 'Poppins', sans-serif;">
+        <option value="blue">Mavi</option>
+        <option value="red">Kırmızı</option>
+        <option value="green">Yeşil</option>
+        <option value="purple">Mor</option>
+        <option value="orange">Turuncu</option>
+        <option value="black">Siyah</option>
+      </select>
+    </div>
   </section>
 
   <section id="features" class="section">
@@ -274,20 +253,31 @@
   <script>
     function changeTheme(theme) {
       const root = document.documentElement;
-      const themes = {
-        blue:   { primary: '#007BFF', dark: '#0056b3', bg: '#f4faff', text: '#333' },
-        red:    { primary: '#DC3545', dark: '#a71d2a', bg: '#fff5f5', text: '#333' },
-        green:  { primary: '#28a745', dark: '#1e7e34', bg: '#f3fff4', text: '#222' },
-        purple: { primary: '#6f42c1', dark: '#4b2a99', bg: '#f9f4ff', text: '#222' },
-        orange: { primary: '#fd7e14', dark: '#cc6510', bg: '#fffaf4', text: '#222' },
-        black:  { primary: '#212529', dark: '#000000', bg: '#121212', text: '#f8f9fa' }
-      };
-
-      const selected = themes[theme];
-      root.style.setProperty('--primary-color', selected.primary);
-      root.style.setProperty('--primary-dark', selected.dark);
-      root.style.setProperty('--background', selected.bg);
-      root.style.setProperty('--text', selected.text);
+      switch(theme) {
+        case 'red':
+          root.style.setProperty('--main-color', '#DC3545');
+          root.style.setProperty('--hover-color', '#a71d2a');
+          break;
+        case 'green':
+          root.style.setProperty('--main-color', '#28a745');
+          root.style.setProperty('--hover-color', '#1c7430');
+          break;
+        case 'purple':
+          root.style.setProperty('--main-color', '#6f42c1');
+          root.style.setProperty('--hover-color', '#4e2a91');
+          break;
+        case 'orange':
+          root.style.setProperty('--main-color', '#fd7e14');
+          root.style.setProperty('--hover-color', '#c75a02');
+          break;
+        case 'black':
+          root.style.setProperty('--main-color', '#343a40');
+          root.style.setProperty('--hover-color', '#1d2124');
+          break;
+        default:
+          root.style.setProperty('--main-color', '#007BFF');
+          root.style.setProperty('--hover-color', '#0056b3');
+      }
     }
   </script>
 
