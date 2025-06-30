@@ -7,8 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --main-color: #00aaff;
-      --bg-gradient: linear-gradient(135deg, #00111a, #000c1a);
+      --highlight-color: #00aaff;
     }
     * {
       margin: 0;
@@ -17,7 +16,7 @@
     }
     body {
       font-family: 'Orbitron', sans-serif;
-      background: var(--bg-gradient);
+      background: linear-gradient(135deg, #00111a, #000c1a);
       color: #fff;
       overflow-x: hidden;
     }
@@ -27,8 +26,8 @@
     }
     header h1 {
       font-size: 4rem;
-      color: var(--main-color);
-      text-shadow: 0 0 20px var(--main-color), 0 0 40px var(--main-color);
+      color: var(--highlight-color);
+      text-shadow: 0 0 20px var(--highlight-color), 0 0 40px var(--highlight-color);
     }
     nav {
       display: flex;
@@ -39,18 +38,18 @@
     }
     nav a {
       text-decoration: none;
-      color: #66ccff;
+      color: var(--highlight-color);
       font-weight: bold;
       padding: 10px 15px;
       border-radius: 8px;
       background: rgba(0, 170, 255, 0.1);
-      box-shadow: 0 0 10px #0099ff;
+      box-shadow: 0 0 10px var(--highlight-color);
       transition: all 0.3s;
     }
     nav a:hover {
-      background: #0099ff;
+      background: var(--highlight-color);
       color: #fff;
-      box-shadow: 0 0 20px var(--main-color), 0 0 30px var(--main-color);
+      box-shadow: 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
     }
     .color-picker {
       display: flex;
@@ -83,8 +82,8 @@
     }
   </style>
   <script>
-    function setThemeColor(color) {
-      document.documentElement.style.setProperty('--main-color', color);
+    function setHighlightColor(color) {
+      document.documentElement.style.setProperty('--highlight-color', color);
     }
   </script>
 </head>
@@ -97,12 +96,12 @@
       <a href="features.html">Özellikler</a>
     </nav>
     <div class="color-picker">
-      <div class="color-btn" style="background:#00aaff" onclick="setThemeColor('#00aaff')"></div>
-      <div class="color-btn" style="background:#ff0044" onclick="setThemeColor('#ff0044')"></div>
-      <div class="color-btn" style="background:#00ff88" onclick="setThemeColor('#00ff88')"></div>
-      <div class="color-btn" style="background:#ffaa00" onclick="setThemeColor('#ffaa00')"></div>
-      <div class="color-btn" style="background:#aa00ff" onclick="setThemeColor('#aa00ff')"></div>
-      <div class="color-btn" style="background:#ffffff" onclick="setThemeColor('#ffffff')"></div>
+      <div class="color-btn" style="background:#00aaff" onclick="setHighlightColor('#00aaff')"></div>
+      <div class="color-btn" style="background:#ff0044" onclick="setHighlightColor('#ff0044')"></div>
+      <div class="color-btn" style="background:#00ff88" onclick="setHighlightColor('#00ff88')"></div>
+      <div class="color-btn" style="background:#ffaa00" onclick="setHighlightColor('#ffaa00')"></div>
+      <div class="color-btn" style="background:#aa00ff" onclick="setHighlightColor('#aa00ff')"></div>
+      <div class="color-btn" style="background:#ffffff" onclick="setHighlightColor('#ffffff')"></div>
     </div>
   </header>
 
