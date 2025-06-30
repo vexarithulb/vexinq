@@ -122,3 +122,6 @@ nav a:hover .nav-dot {
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* hafif hover efekti */
 }
 
+html {
+  scroll-behavior: smooth;
+}
