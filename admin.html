@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vexinq Admin Paneli</title>
   <style>
-    *{box-sizing:border-box;font-family:'Poppins',sans-serif}
-    body{margin:0;background:#f0f4ff;color:#333;display:flex;flex-direction:column;min-height:100vh}
-    header{background:#007BFF;color:#fff;text-align:center;padding:18px 10px;font-size:24px;font-weight:600;box-shadow:0 4px 8px rgba(0,0,0,.1)}
-    .wrap{flex:1;width:100%;max-width:960px;margin:40px auto;background:#fff;padding:25px 30px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.07)}
-    h2{color:#007BFF;margin:30px 0 10px;font-size:22px}
-    label{font-weight:600;margin-top:12px;display:block}
-    input,textarea,select{width:100%;padding:10px;margin-top:6px;border:1px solid #ccc;border-radius:6px;font-size:14px}
-    button{cursor:pointer;padding:10px 16px;margin-top:10px;border:none;border-radius:6px;font-weight:600;background:#007BFF;color:#fff;transition:.2s}
-    button:hover{background:#0056b3}
-    .danger{background:#dc3545} .danger:hover{background:#b02a37}
-    .list-item{display:flex;justify-content:space-between;align-items:center;background:#f7f9ff;padding:8px 10px;border:1px solid #e1e6ff;border-radius:6px;margin-top:6px}
-    .list-item span{flex:1}
-    footer{text-align:center;padding:15px;background:#e6f0ff;color:#555;font-size:14px}
-    .hidden{display:none}
-    #loginBox{max-width:400px;margin:100px auto}
-    @media(max-width:600px){.wrap{margin:20px 10px}}
+    * { box-sizing: border-box; font-family: 'Poppins', sans-serif }
+    body { margin: 0; background: #f0f4ff; color: #333; display: flex; flex-direction: column; min-height: 100vh }
+    header { background: #007BFF; color: #fff; text-align: center; padding: 18px 10px; font-size: 24px; font-weight: 600; box-shadow: 0 4px 8px rgba(0,0,0,.1) }
+    .wrap { flex: 1; width: 100%; max-width: 960px; margin: 40px auto; background: #fff; padding: 25px 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,.07) }
+    h2 { color: #007BFF; margin: 30px 0 10px; font-size: 22px }
+    label { font-weight: 600; margin-top: 12px; display: block }
+    input, textarea, select { width: 100%; padding: 10px; margin-top: 6px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px }
+    button { cursor: pointer; padding: 10px 16px; margin-top: 10px; border: none; border-radius: 6px; font-weight: 600; background: #007BFF; color: #fff; transition: .2s }
+    button:hover { background: #0056b3 }
+    .danger { background: #dc3545 } .danger:hover { background: #b02a37 }
+    .list-item { display: flex; justify-content: space-between; align-items: center; background: #f7f9ff; padding: 8px 10px; border: 1px solid #e1e6ff; border-radius: 6px; margin-top: 6px }
+    .list-item span { flex: 1 }
+    footer { text-align: center; padding: 15px; background: #e6f0ff; color: #555; font-size: 14px }
+    .hidden { display: none }
+    #loginBox { max-width: 400px; margin: 100px auto }
+    #loginMsg { margin-top: 8px; font-size: 14px }
+    @media(max-width:600px){ .wrap{margin:20px 10px} }
   </style>
 </head>
 <body>
@@ -30,49 +31,50 @@
   <div id="loginBox" class="wrap">
     <h2>Giriş Yap</h2>
     <label>Kullanıcı Adı</label>
-    <input type="text" id="loginUser" placeholder="Kullanıcı adı">
+    <input type="text" id="loginUser" placeholder="Kullanıcı adı" />
     <label>Şifre</label>
-    <input type="password" id="loginPass" placeholder="Şifre">
+    <input type="password" id="loginPass" placeholder="Şifre" />
     <button onclick="login()">Giriş Yap</button>
+    <button class="danger" onclick="resetStorage()">Veriyi Sıfırla</button>
+    <div id="loginMsg"></div>
   </div>
 
   <!-- Admin Paneli -->
   <div id="panelBox" class="wrap hidden">
     <h2>Genel Ayarlar</h2>
     <label>Logo İsmi</label>
-    <input id="logoName" type="text" value="Vexinq">
+    <input id="logoName" type="text" />
     <label>Başlık (Hero)</label>
-    <input id="heroTitle" type="text" value="Vexinq ile Sunucunuzu Güçlendirin">
+    <input id="heroTitle" type="text" />
     <label>Açıklama (Hero)</label>
-    <textarea id="heroDesc" rows="3">Her gün yenilenen komutlar ve gelişmiş sistemlerle sunucunuzu bir adım öteye taşıyın.</textarea>
+    <textarea id="heroDesc" rows="3"></textarea>
     <label>Bot Davet Linki</label>
-    <input id="inviteLink" type="text" value="https://discord.com/oauth2/authorize?...">
+    <input id="inviteLink" type="text" />
     <label>Hakkımızda Metni</label>
-    <textarea id="aboutText" rows="4">Vexinq, 2023 yılında Discord topluluklarının ihtiyaçlarını karşılamak amacıyla geliştirilen gelişmiş bir bot sistemidir.</textarea>
+    <textarea id="aboutText" rows="4"></textarea>
 
     <h2>Özellikler</h2>
     <div id="featureContainer"></div>
-    <div style="display:flex;gap:10px;margin-top:8px"><input id="newFeature" placeholder="Özellik ekle..."><button onclick="addFeature()">Ekle</button></div>
+    <div style="display:flex;gap:10px;margin-top:8px">
+      <input id="newFeature" placeholder="Özellik ekle..." />
+      <button onclick="addFeature()">Ekle</button>
+    </div>
 
     <h2>Destek Sunucuları</h2>
     <div id="supportContainer"></div>
-    <div style="display:flex;gap:10px;margin-top:8px"><input id="newSupport" placeholder="https://discord.gg/... "><button onclick="addSupport()">Ekle</button></div>
+    <div style="display:flex;gap:10px;margin-top:8px">
+      <input id="newSupport" placeholder="https://discord.gg/... " />
+      <button onclick="addSupport()">Ekle</button>
+    </div>
 
     <h2>Tema Rengi</h2>
-    <select id="themeColor">
-      <option value="#007BFF">Mavi</option>
-      <option value="#28a745">Yeşil</option>
-      <option value="#dc3545">Kırmızı</option>
-      <option value="#6f42c1">Mor</option>
-      <option value="#fd7e14">Turuncu</option>
-      <option value="#343a40">Siyah</option>
-    </select>
+    <select id="themeColor"></select>
 
     <h2>Admin Yönetimi</h2>
     <div id="adminContainer"></div>
     <div style="display:flex;gap:10px;margin-top:8px">
-      <input id="newAdminUser" placeholder="Kullanıcı adı">
-      <input id="newAdminPass" type="password" placeholder="Şifre">
+      <input id="newAdminUser" placeholder="Kullanıcı adı" />
+      <input id="newAdminPass" type="password" placeholder="Şifre" />
       <button onclick="addAdmin()">Ekle</button>
     </div>
 
@@ -82,119 +84,184 @@
 
   <footer>Discord: Vexarithul | © 2025 Tüm Hakları Saklıdır</footer>
 
-<script>
-// ------- Veri Yapısı -------
-const defaultData = {
-  settings:{logo:"Vexinq",heroTitle:"Vexinq ile Sunucunuzu Güçlendirin",heroDesc:"Her gün yenilenen komutlar ve gelişmiş sistemlerle sunucunuzu bir adım öteye taşıyın.",invite:"https://discord.com/oauth2/authorize?...",about:"Vexinq, 2023 yılında Discord topluluklarının ihtiyaçlarını karşılamak amacıyla geliştirilen gelişmiş bir bot sistemidir.",theme:"#007BFF"},
-  features:["🏗️ Otomatik Sunucu Kurulumu","🔨 Gelişmiş Moderasyon Sistemi","🛡️ Güçlü Koruma ve Anti-Raid"],
-  supports:["https://discord.gg/qvZBKEUCQy","https://discord.gg/MKq4UsRNMS"],
-  admins:[{user:"dcvexarithul",pass:"123"},{user:"emre",pass:"123"}]
-};
+  <script>
+    const storageKey = 'vexData';
+    const defaultData = {
+      settings: {
+        logo: 'Vexinq',
+        heroTitle: 'Vexinq ile Sunucunuzu Güçlendirin',
+        heroDesc: 'Her gün yenilenen komutlar ve gelişmiş sistemlerle sunucunuzu bir adım öteye taşıyın.',
+        invite: 'https://discord.com/oauth2/authorize?...',
+        about: 'Vexinq, 2023 yılında Discord topluluklarının ihtiyaçlarını karşılamak amacıyla geliştirilen gelişmiş bir bot sistemidir.',
+        theme: '#007BFF'
+      },
+      features: [
+        '🏗️ Otomatik Sunucu Kurulumu',
+        '🔨 Gelişmiş Moderasyon Sistemi',
+        '🛡️ Güçlü Koruma ve Anti-Raid'
+      ],
+      supports: [
+        'https://discord.gg/qvZBKEUCQy',
+        'https://discord.gg/MKq4UsRNMS'
+      ],
+      admins: [
+        { user: 'dcvexarithul', pass: '123' },
+        { user: 'emre', pass: '123' }
+      ]
+    };
 
-if(!localStorage.getItem("vexData")){
-  localStorage.setItem("vexData",JSON.stringify(defaultData));
-}
+    // Güvenli veri yükleme
+    function loadData() {
+      try {
+        const raw = localStorage.getItem(storageKey);
+        if (!raw) throw 'noData';
+        const parsed = JSON.parse(raw);
+        // basit doğrulama
+        if (!parsed.admins || !Array.isArray(parsed.admins)) throw 'corrupt';
+        return parsed;
+      } catch (e) {
+        console.warn('Veri bozuk veya yok, varsayılana sıfırlandı');
+        localStorage.setItem(storageKey, JSON.stringify(defaultData));
+        return JSON.parse(JSON.stringify(defaultData));
+      }
+    }
 
-let data = JSON.parse(localStorage.getItem("vexData"));
+    let data = loadData();
 
-// ------- Giriş -------
-function login(){
-  const u=document.getElementById("loginUser").value.trim();
-  const p=document.getElementById("loginPass").value.trim();
-  if(data.admins.find(a=>a.user===u&&a.pass===p)){
-    localStorage.setItem("vexLogged","1");
-    showPanel();
-  }else alert("Hatalı kullanıcı adı veya şifre!");
-}
+    // Tema seçenekleri oluştur
+    const themeSelect = document.getElementById('themeColor');
+    ['#007BFF','#28a745','#dc3545','#6f42c1','#fd7e14','#343a40'].forEach(col=>{
+      const opt=document.createElement('option');
+      opt.value=col; opt.textContent=col; themeSelect.appendChild(opt);
+    });
 
-function showPanel(){
-  document.getElementById("loginBox").classList.add("hidden");
-  document.getElementById("panelBox").classList.remove("hidden");
-  // yükle alanlar
-  document.getElementById("logoName").value=data.settings.logo;
-  document.getElementById("heroTitle").value=data.settings.heroTitle;
-  document.getElementById("heroDesc").value=data.settings.heroDesc;
-  document.getElementById("inviteLink").value=data.settings.invite;
-  document.getElementById("aboutText").value=data.settings.about;
-  document.getElementById("themeColor").value=data.settings.theme;
-  renderFeatures();
-  renderSupports();
-  renderAdmins();
-}
+    // ------ Giriş ------
+    function login() {
+      const u = document.getElementById('loginUser').value.trim();
+      const p = document.getElementById('loginPass').value.trim();
+      console.log('Giriş denemesi:', u);
+      const found = data.admins.find(a => a.user === u && a.pass === p);
+      const msg = document.getElementById('loginMsg');
+      if (found) {
+        localStorage.setItem('vexLogged', '1');
+        msg.textContent = 'Giriş başarılı, yönlendiriliyor...';
+        msg.style.color = '#28a745';
+        setTimeout(showPanel, 600);
+      } else {
+        msg.textContent = 'Hatalı kullanıcı adı veya şifre!';
+        msg.style.color = '#dc3545';
+        console.warn('Başarısız giriş:', u, p);
+      }
+    }
 
-// ------- Özellikler -------
-function renderFeatures(){
-  const cont=document.getElementById("featureContainer");
-  cont.innerHTML="";
-  data.features.forEach((f,i)=>{
-    cont.innerHTML+=`<div class="list-item"><span>${f}</span><button class="danger" onclick="delFeature(${i})">Sil</button></div>`;
-  });
-}
-function addFeature(){
-  const val=document.getElementById("newFeature").value.trim();
-  if(val){data.features.push(val);document.getElementById("newFeature").value="";renderFeatures();}
-}
-function delFeature(i){data.features.splice(i,1);renderFeatures();}
+    // ------ Paneli Göster ------
+    function showPanel() {
+      document.getElementById('loginBox').classList.add('hidden');
+      document.getElementById('panelBox').classList.remove('hidden');
+      // alanları doldur
+      document.getElementById('logoName').value = data.settings.logo;
+      document.getElementById('heroTitle').value = data.settings.heroTitle;
+      document.getElementById('heroDesc').value = data.settings.heroDesc;
+      document.getElementById('inviteLink').value = data.settings.invite;
+      document.getElementById('aboutText').value = data.settings.about;
+      document.getElementById('themeColor').value = data.settings.theme;
+      renderFeatures();
+      renderSupports();
+      renderAdmins();
+    }
 
-// ------- Destek -------
-function renderSupports(){
-  const cont=document.getElementById("supportContainer");
-  cont.innerHTML="";
-  data.supports.forEach((s,i)=>{
-    cont.innerHTML+=`<div class="list-item"><span>${s}</span><button class="danger" onclick="delSupport(${i})">Sil</button></div>`;
-  });
-}
-function addSupport(){
-  const val=document.getElementById("newSupport").value.trim();
-  if(val.startsWith("http")){
-    data.supports.push(val);
-    document.getElementById("newSupport").value="";
-    renderSupports();
-  }else alert("Geçerli bir link giriniz");
-}
-function delSupport(i){data.supports.splice(i,1);renderSupports();}
+    // ------ Özellikler ------
+    function renderFeatures() {
+      const c = document.getElementById('featureContainer');
+      c.innerHTML = '';
+      data.features.forEach((f, i) => {
+        c.innerHTML += `<div class="list-item"><span>${f}</span><button class="danger" onclick="delFeature(${i})">Sil</button></div>`;
+      });
+    }
+    function addFeature() {
+      const v = document.getElementById('newFeature').value.trim();
+      if (v) {
+        data.features.push(v);
+        document.getElementById('newFeature').value = '';
+        renderFeatures();
+      }
+    }
+    function delFeature(i) {
+      data.features.splice(i, 1);
+      renderFeatures();
+    }
 
-// ------- Adminler -------
-function renderAdmins(){
-  const cont=document.getElementById("adminContainer");
-  cont.innerHTML="";
-  data.admins.forEach((a,i)=>{
-    cont.innerHTML+=`<div class="list-item"><span>👤 ${a.user}</span>${a.user!=='dcvexarithul'?`<button class='danger' onclick='delAdmin(${i})'>Sil</button>`:''}</div>`;
-  });
-}
-function addAdmin(){
-  const u=document.getElementById("newAdminUser").value.trim();
-  const p=document.getElementById("newAdminPass").value.trim();
-  if(!u||!p){alert("Boş alan bırakmayın");return;}
-  if(data.admins.find(a=>a.user===u)){alert("Bu kullanıcı zaten var");return;}
-  data.admins.push({user:u,pass:p});
-  document.getElementById("newAdminUser").value="";
-  document.getElementById("newAdminPass").value="";
-  renderAdmins();
-}
-function delAdmin(i){
-  if(data.admins[i].user==='dcvexarithul'){alert('Super admin silinemez');return;}
-  data.admins.splice(i,1);renderAdmins();
-}
+    // ------ Destek ------
+    function renderSupports() {
+      const c = document.getElementById('supportContainer');
+      c.innerHTML = '';
+      data.supports.forEach((s, i) => {
+        c.innerHTML += `<div class="list-item"><span>${s}</span><button class="danger" onclick="delSupport(${i})">Sil</button></div>`;
+      });
+    }
+    function addSupport() {
+      const v = document.getElementById('newSupport').value.trim();
+      if (v.startsWith('http')) {
+        data.supports.push(v);
+        document.getElementById('newSupport').value = '';
+        renderSupports();
+      } else alert('Geçerli bir link giriniz');
+    }
+    function delSupport(i) {
+      data.supports.splice(i, 1);
+      renderSupports();
+    }
 
-// ------- Kaydet / Çıkış -------
-function saveAll(){
-  data.settings.logo=document.getElementById("logoName").value.trim();
-  data.settings.heroTitle=document.getElementById("heroTitle").value.trim();
-  data.settings.heroDesc=document.getElementById("heroDesc").value.trim();
-  data.settings.invite=document.getElementById("inviteLink").value.trim();
-  data.settings.about=document.getElementById("aboutText").value.trim();
-  data.settings.theme=document.getElementById("themeColor").value;
-  localStorage.setItem("vexData",JSON.stringify(data));
-  alert("Değişiklikler kaydedildi ✔️");
-}
-function logout(){
-  localStorage.removeItem("vexLogged");
-  location.reload();
-}
+    // ------ Adminler ------
+    function renderAdmins() {
+      const c = document.getElementById('adminContainer');
+      c.innerHTML = '';
+      data.admins.forEach((a, i) => {
+        c.innerHTML += `<div class="list-item"><span>👤 ${a.user}</span>${a.user !== 'dcvexarithul' ? `<button class='danger' onclick='delAdmin(${i})'>Sil</button>` : ''}</div>`;
+      });
+    }
+    function addAdmin() {
+      const u = document.getElementById('newAdminUser').value.trim();
+      const p = document.getElementById('newAdminPass').value.trim();
+      if (!u || !p) { alert('Boş alan bırakmayın'); return }
+      if (data.admins.find(a => a.user === u)) { alert('Bu kullanıcı zaten var'); return }
+      data.admins.push({ user: u, pass: p });
+      document.getElementById('newAdminUser').value = '';
+      document.getElementById('newAdminPass').value = '';
+      renderAdmins();
+    }
+    function delAdmin(i) {
+      if (data.admins[i].user === 'dcvexarithul') { alert('Süper admin silinemez'); return }
+      data.admins.splice(i, 1);
+      renderAdmins();
+    }
 
-// Yüklenince otomatik
-window.onload=()=>{
-  if(localStorage.getItem("vexLogged")) showPanel();
-}
+    // ------ Kaydet / Çıkış ------
+    function saveAll() {
+      data.settings.logo = document.getElementById('logoName').value.trim();
+      data.settings.heroTitle = document.getElementById('heroTitle').value.trim();
+      data.settings.heroDesc = document.getElementById('heroDesc').value.trim();
+      data.settings.invite = document.getElementById('inviteLink').value.trim();
+      data.settings.about = document.getElementById('aboutText').value.trim();
+      data.settings.theme = document.getElementById('themeColor').value;
+      localStorage.setItem(storageKey, JSON.stringify(data));
+      alert('Değişiklikler kaydedildi ✔️');
+    }
+    function logout() {
+      localStorage.removeItem('vexLogged');
+      location.reload();
+    }
+    function resetStorage() {
+      localStorage.removeItem(storageKey);
+      localStorage.removeItem('vexLogged');
+      alert('Yerel veriler sıfırlandı, sayfa yenileniyor');
+      location.reload();
+    }
 
+    // Otomatik panel açılışı
+    window.onload = () => {
+      if (localStorage.getItem('vexLogged')) showPanel();
+    }
+  </script>
+</body>
+</html>
