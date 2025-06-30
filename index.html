@@ -4,9 +4,185 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vexinq Discord Botu</title>
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4faff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #007BFF;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #b3d1ff;
+    }
+
+    .invite-btn {
+      background-color: white;
+      color: #007BFF !important;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .invite-btn:hover {
+      background-color: #0056b3;
+      color: white !important;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #007BFF, #0D6EFD);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      animation: fadeIn 2s ease;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .cta {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: white;
+      color: #007BFF;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .cta:hover {
+      background-color: #0056b3;
+      color: white;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 32px;
+      color: #007BFF;
+      margin-bottom: 20px;
+    }
+
+    .section ul {
+      padding-left: 20px;
+    }
+
+    footer {
+      background-color: #0D6EFD;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* Support Box */
+    .support-box {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ffffff;
+      border-left: 5px solid #007BFF;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.15);
+      text-align: center;
+      z-index: 1000;
+      animation: slideIn 1.5s ease;
+    }
+
+    .support-box h1 {
+      font-size: 18px;
+      color: #007BFF;
+      margin-bottom: 10px;
+    }
+
+    .support-box p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      background-color: #007BFF;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      margin: 5px;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
 </head>
 <body>
+
   <header>
     <div class="logo">Vexinq</div>
     <nav>
@@ -14,165 +190,48 @@
         <li><a href="#about">Hakkımızda</a></li>
         <li><a href="#features">Özellikler</a></li>
         <li><a href="#contact">İletişim</a></li>
-        <li><a class="invite-btn" href="https://discord.com/oauth2/authorize?client_id=1387098050316472341&permissions=8&integration_type=0&scope=bot" target="_blank">Davet Et</a></li>
+        <li><a class="invite-btn" href="https://discord.com/oauth2/authorize?client_id=1387098050316472341&permissions=8&scope=bot" target="_blank">Davet Et</a></li>
       </ul>
     </nav>
   </header>
 
   <section class="hero">
     <h1>Vexinq ile Sunucunuzu Güçlendirin</h1>
-    <p>Hergün Yenilenen Özelliklerle Sunucunuzu Güçlendirin Hergün Yenilenen Komutlarla Sunucunuz Mükemmel Olacak!.</p>
-    <a class="cta" href="https://discord.com/oauth2/authorize?client_id=1387098050316472341&permissions=8&integration_type=0&scope=bot" target="_blank">Botu Davet Et</a>
+    <p>Her gün yenilenen komutlar ve gelişmiş sistemlerle sunucunuzu bir adım öteye taşıyın.</p>
+    <a class="cta" href="https://discord.com/oauth2/authorize?client_id=1387098050316472341&permissions=8&scope=bot" target="_blank">Botu Davet Et</a>
   </section>
 
   <section id="about" class="section">
     <h2>Hakkımızda</h2>
-    <p>Vexinq, 2023 yılında Discord topluluklarının ihtiyaçlarını karşılamak ve sınırları zorlayan bir deneyim sunmak amacıyla geliştirildi. Sadece bir bot değil; stabilite, hız ve teknolojiyle bütünleşmiş bir sistem sunuyoruz.
-
-Günümüzde birçok bot sadece komut sunarken, Vexinq; kullanıcı etkileşimini ön planda tutan butonlu arayüzler, dinamik filtre sistemleri, ve otomatik yapılandırmalar ile sunucuların dijital omurgası haline gelmeyi hedefliyor.
-
-Vexinq’in temel vizyonu:
-
-Kararlı ve optimize edilmiş altyapı
-
-Kolay kullanılabilir ama derinlikli sistemler
-
-Kullanıcı dostu arayüzler ve etkileşimli kontroller
-
-Geliştirici odaklı modülerlik ve sürdürülebilirlik
-
-Kendimizi sadece komutlar üzerinden değil; sağladığımız deneyim, hız ve entegrasyon kabiliyetleriyle anlatıyoruz. Sürekli güncellenen sistemimiz sayesinde, her geçen gün daha akıllı, daha hızlı ve daha etkili hale geliyoruz.
-
-Vexinq ile sıradan değil, sistematik olun.</p>
+    <p>Vexinq, 2023 yılında Discord topluluklarının ihtiyaçlarını karşılamak amacıyla geliştirilen gelişmiş bir bot sistemidir. Kullanıcı odaklı tasarımı, modüler altyapısı ve sürekli güncellenen yapısı ile sunucular için en iyi yardımcıyı sunar.</p>
   </section>
 
   <section id="features" class="section">
     <h2>Özellikler</h2>
     <ul>
-      <li>🚀 Özellikler – Vexinq Ne Sunar?
-Vexinq, bir Discord botundan beklenebilecek tüm sistemleri en gelişmiş haliyle tek bir çatı altında toplar. Hem kullanıcı dostu hem de yönetici odaklı modülleriyle, sunucunuzu baştan sona profesyonelce yönetmenizi sağlar.</li>
-
-</li>🏗️ Otomatik Sunucu Kurulum Sistemi
-Sıfırdan bir sunucu mu kuruyorsunuz? Vexinq ile tek tıkla;
-
-Hazır kanal ve rol şablonları
-
-Otomatik kategori yerleşimi
-
-Temaya özel sistem kurulumu
-Kurulumunuzu saniyeler içinde tamamlayın.</li>
-
-</li>🔨 Gelişmiş Moderasyon Sistemi
-Sunucunuzu kontrol altında tutmak için gereken her şey:
-
-Butonlu Ban, Mute, Kick ve Uyarı sistemleri
-
-Geçici cezalar (süreli mute/ban)
-
-Detaylı ceza geçmişi, log sistemi ve oto-uyarı mekanizması
-
-Yetki aşımına karşı akıllı yönetici denetimi</li>
-
-</li>🛡️ Güçlü Koruma Altyapısı
-Sunucunuzu her türlü zararlı kullanıcıya karşı koruyun:
-
-Anti-raid (bot koruması, spam engeli)
-
-Anti-link, anti-@everyone, capslock ve emoji spam filtresi
-
-Rol ve kanal koruması: Silinen veya düzenlenen verileri otomatik geri yükleme
-
-Gelişmiş whitelist ve güven seviyesi sistemi</li>
-
-</li>🧰 Daha Fazlası:
-Kayıt Sistemi: Cinsiyetli, butonlu, oto-rol destekli
-
-Davet Takibi ve Yetkili Takip sistemleri
-
-Stat paneli, aktiflik takibi ve XP sistemi
-
-Eğlence, bilgi ve yardımcı komutlar ile destekleyici modüller
-
-Filtreli yardım menüsü ve kategorili komutlar</li>
-
-Vexinq, sadece bir bot değil, bir sistemdir.
-Sunucunuzun ihtiyaç duyduğu her şey burada. Ve bu, sadece başlangıç.</li>
-
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title>Destek Sunucumuz</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fef7f0;
-      margin: 0;
-      padding: 0;
-    }
-
-    .support-box {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.15);
-      text-align: center;
-      z-index: 1000;
-    }
-
-    .support-box h1 {
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: #d35400;
-    }
-
-    .support-box p {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 15px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 14px;
-      border-radius: 6px;
-      background-color: orange;
-      color: white;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: red;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="support-box">
-    <h1>📢 Destek Sunucumuz</h1>
-    <p>7/24 ulaşabileceğiniz öneri veya sorunlar için bize gelebilirsiniz!</p>
-    <a class="btn" href="https://discord.gg/qvZBKEUCQy" target="_blank">Vexinq</a>
-    <a class="btn" href="https://discord.gg/MKq4UsRNMS" target="_blank">ZenixCore</a>
-  </div>
-
-</body>
-</html>
-      
+      <li>🏗️ Otomatik Sunucu Kurulumu</li>
+      <li>🔨 Gelişmiş Moderasyon Sistemi</li>
+      <li>🛡️ Güçlü Koruma ve Anti-Raid</li>
+      <li>🧰 Kayıt, Stat ve Davet Takip Sistemleri</li>
+      <li>🎉 Eğlence ve Bilgi Komutları</li>
     </ul>
   </section>
 
   <section id="contact" class="section">
     <h2>İletişim</h2>
-    <p>Bize ulaşmak için <a href="YAKINDA...">YAKINDA..</a> adresine mail atabilirsiniz.</p>
+    <p>Bize ulaşmak için <a href="#">YAKINDA...</a> adresinden mail atabilirsiniz.</p>
   </section>
 
   <footer>
     <p>&copy; 2025 Vexinq Bot. Tüm hakları saklıdır.</p>
   </footer>
+
+  <div class="support-box">
+    <h1>📢 Destek Sunucumuz</h1>
+    <p>7/24 destek için bize ulaşabilirsiniz.</p>
+    <a class="btn" href="https://discord.gg/qvZBKEUCQy" target="_blank">Vexinq</a>
+    <a class="btn" href="https://discord.gg/MKq4UsRNMS" target="_blank">ZenixCore</a>
+  </div>
+
 </body>
 </html>
