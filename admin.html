@@ -150,17 +150,16 @@
 
 <script>
   let admins = [
-    { username: "dcvexarithul", password: "123" }
-    { username: "emre" , password: "123" }
+    { username: "dcvexarithul", password: "123" },
+    { username: "emre", password: "123" }
   ];
-
 
   const features = ['🛡️ Güçlü Koruma', '🎉 Eğlence Komutları'];
   const supports = ['https://discord.gg/qvZBKEUCQy', 'https://discord.gg/MKq4UsRNMS'];
 
   function login() {
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
+    const user = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value.trim();
     const valid = admins.find(a => a.username === user && a.password === pass);
     if (valid) {
       document.getElementById("loginBox").classList.add("hidden");
@@ -212,6 +211,8 @@
       supports.push(val);
       document.getElementById("newSupport").value = "";
       renderLists();
+    } else {
+      alert("⚠️ Geçerli bir URL girin.");
     }
   }
 
@@ -242,7 +243,7 @@
       admins
     };
     alert("✅ Ayarlar kaydedildi!\n\n" + JSON.stringify(data, null, 2));
-    // Veritabanına entegre etmek istersen buraya fetch POST koyabilirsin.
+    // Sunucuya göndermek istersen buraya fetch POST ekleyebilirsin.
   }
 </script>
 
