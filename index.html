@@ -170,6 +170,25 @@
       background-color: var(--hover-color);
     }
 
+    /* Admin Giriş Butonu */
+    .admin-login {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: var(--main-color);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 1001;
+    }
+
+    .admin-login:hover {
+      background-color: var(--hover-color);
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -212,7 +231,7 @@
 
     <div style="text-align:center; margin-top:30px;">
       <label for="theme"><strong>🎨 Tema Seçin:</strong></label>
-      <select id="theme" onchange="changeTheme(this.value)" style="padding:8px 12px; border-radius:6px; border:1px solid #ccc; font-family: 'Poppins', sans-serif;">
+      <select id="theme" onchange="changeTheme(this.value)" style="padding:8px 12px; border-radius:6px; border:1px solid #ccc;">
         <option value="blue">Mavi</option>
         <option value="red">Kırmızı</option>
         <option value="green">Yeşil</option>
@@ -250,6 +269,8 @@
     <a class="btn" href="https://discord.gg/MKq4UsRNMS" target="_blank">ZenixCore</a>
   </div>
 
+  <div class="admin-login" onclick="adminLogin()">Giriş Yap</div>
+
   <script>
     function changeTheme(theme) {
       const root = document.documentElement;
@@ -277,6 +298,19 @@
         default:
           root.style.setProperty('--main-color', '#007BFF');
           root.style.setProperty('--hover-color', '#0056b3');
+      }
+    }
+
+    function adminLogin() {
+      const username = prompt("Kullanıcı Adı:");
+      const password = prompt("Şifre:");
+
+      if (username === "dcvexarithul" && password === "123") {
+        alert("✅ Başarıyla giriş yapıldı!");
+        // Admin paneline yönlendirme yapılabilir.
+        // window.location.href = "admin.html";
+      } else {
+        alert("❌ Hatalı kullanıcı adı veya şifre!");
       }
     }
   </script>
