@@ -6,9 +6,9 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      background-color: #f8f8f8;
       margin: 0;
-      padding: 20px;
+      padding: 30px;
     }
 
     h1 {
@@ -17,41 +17,38 @@
     }
 
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
-      background: #fff;
-      padding: 20px;
+      background: white;
+      padding: 25px;
       border: 1px solid #ccc;
+      border-radius: 6px;
     }
 
     label {
       display: block;
-      margin-top: 15px;
+      margin-top: 20px;
       font-weight: bold;
     }
 
-    textarea {
+    textarea, input, select {
       width: 100%;
-      height: 150px;
-      margin-top: 5px;
       padding: 10px;
-      font-family: monospace;
       font-size: 14px;
+      margin-top: 5px;
       border: 1px solid #aaa;
-      resize: vertical;
+      border-radius: 4px;
     }
 
     .btn {
-      display: inline-block;
-      margin-top: 20px;
+      margin-top: 30px;
       background-color: #007BFF;
       color: white;
-      padding: 10px 20px;
-      text-decoration: none;
+      padding: 12px 24px;
       border: none;
-      border-radius: 4px;
-      cursor: pointer;
+      border-radius: 5px;
       font-weight: bold;
+      cursor: pointer;
     }
 
     .btn:hover {
@@ -60,9 +57,13 @@
 
     .footer {
       text-align: center;
-      font-size: 13px;
-      color: #666;
       margin-top: 40px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .section {
+      margin-bottom: 30px;
     }
   </style>
 </head>
@@ -71,23 +72,77 @@
   <h1>Vexinq Admin Paneli</h1>
 
   <div class="container">
-    <label for="about">Hakkımızda Metni</label>
-    <textarea id="about">
-Vexinq, 2023 yılında Discord topluluklarının ihtiyaçlarını karşılamak amacıyla geliştirilen gelişmiş bir bot sistemidir. Kullanıcı odaklı tasarımı, modüler altyapısı ve sürekli güncellenen yapısı ile sunucular için en iyi yardımcıyı sunar.
-    </textarea>
+    
+    <div class="section">
+      <label for="about">Hakkımızda Metni</label>
+      <textarea id="about" rows="5">Vexinq, 2023 yılında Discord topluluklarının ihtiyaçlarını karşılamak amacıyla geliştirilen gelişmiş bir bot sistemidir. Kullanıcı odaklı tasarımı, modüler altyapısı ve sürekli güncellenen yapısı ile sunucular için en iyi yardımcıyı sunar.</textarea>
+    </div>
 
-    <button class="btn" onclick="saveAbout()">Kaydet</button>
+    <div class="section">
+      <label for="features">Özellikler (Her satıra bir özellik yaz)</label>
+      <textarea id="features" rows="6">
+🏗️ Otomatik Sunucu Kurulumu
+🔨 Gelişmiş Moderasyon Sistemi
+🛡️ Güçlü Koruma ve Anti-Raid
+🧰 Kayıt, Stat ve Davet Takip Sistemleri
+🎉 Eğlence ve Bilgi Komutları
+      </textarea>
+    </div>
+
+    <div class="section">
+      <label for="theme">Varsayılan Tema Rengi</label>
+      <select id="theme">
+        <option value="blue" selected>Mavi</option>
+        <option value="red">Kırmızı</option>
+        <option value="green">Yeşil</option>
+        <option value="purple">Mor</option>
+        <option value="orange">Turuncu</option>
+        <option value="black">Siyah</option>
+      </select>
+    </div>
+
+    <div class="section">
+      <label for="botInvite">Bot Davet Linki</label>
+      <input type="text" id="botInvite" value="https://discord.com/oauth2/authorize?client_id=1387098050316472341&permissions=8&scope=bot">
+    </div>
+
+    <div class="section">
+      <label for="support1">Destek Sunucu Linki 1 (Vexinq)</label>
+      <input type="text" id="support1" value="https://discord.gg/qvZBKEUCQy">
+    </div>
+
+    <div class="section">
+      <label for="support2">Destek Sunucu Linki 2 (ZenixCore)</label>
+      <input type="text" id="support2" value="https://discord.gg/MKq4UsRNMS">
+    </div>
+
+    <div class="section">
+      <label for="loginText">Giriş Buton Yazısı</label>
+      <input type="text" id="loginText" value="Giriş Yap">
+    </div>
+
+    <button class="btn" onclick="savePanel()">Kaydet</button>
   </div>
 
   <div class="footer">
-    &copy; 2025 Vexinq Panel. Sade Yönetim Paneli.
+    &copy; 2025 Vexinq Panel. Tüm hakları saklıdır.
   </div>
 
   <script>
-    function saveAbout() {
-      const text = document.getElementById("about").value;
-      alert("✅ Hakkımızda metni kaydedildi:\n\n" + text);
-      // Gerçek sistemde burada backend'e POST yapılır
+    function savePanel() {
+      const data = {
+        about: document.getElementById("about").value,
+        features: document.getElementById("features").value,
+        theme: document.getElementById("theme").value,
+        botInvite: document.getElementById("botInvite").value,
+        support1: document.getElementById("support1").value,
+        support2: document.getElementById("support2").value,
+        loginText: document.getElementById("loginText").value,
+      };
+
+      alert("✅ Kaydedildi:\n\n" + JSON.stringify(data, null, 2));
+      // Gerçek backend'e gönderim yapılabilir
+      // örn: fetch('/save', { method: 'POST', body: JSON.stringify(data) })
     }
   </script>
 
