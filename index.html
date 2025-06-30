@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --highlight-color: #00aaff;
+      --highlight-color: #ff0044;
     }
     * {
       margin: 0;
@@ -42,7 +42,7 @@
       font-weight: bold;
       padding: 10px 15px;
       border-radius: 8px;
-      background: rgba(0, 170, 255, 0.1);
+      background: rgba(255, 0, 68, 0.1);
       box-shadow: 0 0 10px var(--highlight-color);
       transition: all 0.3s;
     }
@@ -64,6 +64,38 @@
       border: 2px solid #fff;
       cursor: pointer;
       box-shadow: 0 0 8px rgba(255,255,255,0.5);
+    }
+    section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 2rem;
+      color: var(--highlight-color);
+      margin-bottom: 30px;
+      text-shadow: 0 0 15px var(--highlight-color);
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(255, 0, 68, 0.5);
+      padding: 30px;
+      margin-bottom: 30px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px var(--highlight-color);
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li::before {
+      content: "★ ";
+      color: var(--highlight-color);
     }
     footer {
       text-align: center;
@@ -96,14 +128,32 @@
       <a href="features.html">Özellikler</a>
     </nav>
     <div class="color-picker">
-      <div class="color-btn" style="background:#00aaff" onclick="setHighlightColor('#00aaff')"></div>
       <div class="color-btn" style="background:#ff0044" onclick="setHighlightColor('#ff0044')"></div>
-      <div class="color-btn" style="background:#00ff88" onclick="setHighlightColor('#00ff88')"></div>
       <div class="color-btn" style="background:#ffaa00" onclick="setHighlightColor('#ffaa00')"></div>
+      <div class="color-btn" style="background:#00aaff" onclick="setHighlightColor('#00aaff')"></div>
+      <div class="color-btn" style="background:#00ff88" onclick="setHighlightColor('#00ff88')"></div>
       <div class="color-btn" style="background:#aa00ff" onclick="setHighlightColor('#aa00ff')"></div>
       <div class="color-btn" style="background:#ffffff" onclick="setHighlightColor('#ffffff')"></div>
     </div>
   </header>
+
+  <section id="about">
+    <h2>Hakkımda</h2>
+    <div class="card">
+      <p>Ben Vexarithul. Modern, sade ve etkili dijital deneyimler üretmeyi seviyorum. Kodlarım net, arayüzlerim akıcıdır.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projelerim</h2>
+    <div class="card">
+      <ul>
+        <li>PureFlow - Temiz ve hızlı UI/UX sistemi</li>
+        <li>BlueShell - Minimalist portföy şablonu</li>
+        <li>LightEngine - Modern JS animasyon altyapısı</li>
+      </ul>
+    </div>
+  </section>
 
   <footer>
     <p>&copy; 2025 Vexarithul. Tüm hakları saklıdır.</p>
