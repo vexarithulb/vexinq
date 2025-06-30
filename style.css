@@ -105,3 +105,20 @@ footer {
   font-size: 14px;
   color: #666;
 }
+
+.nav-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background-color: #007BFF;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.4); /* düşük glow */
+  transition: box-shadow 0.3s ease;
+  vertical-align: middle;
+}
+
+nav a:hover .nav-dot {
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* hafif hover efekti */
+}
+
